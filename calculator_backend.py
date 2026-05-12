@@ -8,39 +8,61 @@ Created on Wed May  6 18:26:32 2026
 import math 
 
 class Calculater:
+    def __init__(self):
+        self.mode = "Degrees"
+
+    def change_mod(self, mode_want_to_change):
+        if mode_want_to_change in ["Degrees", "Radians"]: #input can only to be switch to these two function
+            if self.mode != mode_want_to_change:
+                self.mode = mode_want_to_change
     
-    def addition(x,y):
+    def addition(self, x,y):
         return x + y
         
-    def subtraction(x,y):
+    def subtraction(self, x,y):
         return x - y
     
-    def multiplication(x,y):
+    def multiplication(self, x,y):
         return x * y
     
-    def Division(x,y):
+    def Division(self, x,y):
         return x / y
     
-    def square(x,index):
-        return math.pow(x, index)
+    def square(self,x): #only for power 2 square
+        return x ** 2
     
-    def square_root(x):
+    def power_square(self, x,power): #accept any input of powers
+        return math.pow(x, power)
+    
+    def square_root(self, x):
         return math.sqrt(x)
     
-    def sin(x):
-        return math.sin(math.radians(x))
+    def sin(self, x):
+        if self.mode == "Degrees":
+            return math.sin(math.radians(x))
+        return math.sin(x)
     
-    def cos(x):
-        return math.cos(math.radians(x))
+    def cos(self, x):
+        if self.mode == "Degrees":
+            return math.cos(math.radians(x))
+        return math.cos(x)
     
-    def tan(x):
-        return math.tan(math.radians(x))
+    def tan(self, x):
+        if self.mode == "Degrees":
+            return math.tan(math.radians(x))
+        return math.tan(x)
     
-    def inv_sin(x):
-        return math.degrees(math.asin(x))
+    def inv_sin(self,x):
+        if self.mode == "Degrees":
+            return math.degrees(math.asin(x))
+        return math.asin(x)
     
-    def inv_cos(x):
-        return math.degrees(math.acos(x))
+    def inv_cos(self, x):
+        if self.mode == "Degrees":
+            return math.degrees(math.acos(x))
+        return math.acos(x)
     
-    def inv_tan(x):
-        return math.degrees(math.atan(x))
+    def inv_tan(self, x):
+        if self.mode == "Degrees":
+            return math.degrees(math.atan(x))
+        return math.atan(x)
