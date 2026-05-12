@@ -5,6 +5,7 @@ Created on Wed May  6 18:26:32 2026
 
 @author: simon
 """
+import math 
 
 class Calculater:
     
@@ -20,11 +21,26 @@ class Calculater:
     def Division(x,y):
         return x / y
     
-    def square(x):
-        return x ** 2
+    def square(x,index):
+        return math.pow(x, index)
     
     def square_root(x):
-        return x ** 0.5
+        return math.sqrt(x)
     
-    def x_square(x,y): #y is the index
-        return x ** y
+    def sin(x):
+        return math.sin(math.radians(x))
+    
+    def cos(x):
+        return math.cos(math.radians(x))
+    
+    def tan(x):
+        return math.tan(math.radians(x))
+    
+    def inv_sin(x):
+        return math.degrees(math.asin(x))
+    
+    def inv_cos(x):
+        return math.degrees(math.acos(x))
+    
+    def inv_tan(x):
+        return math.degrees(math.atan(x))
