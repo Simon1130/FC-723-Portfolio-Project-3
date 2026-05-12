@@ -25,7 +25,9 @@ class Calculater:
     def multiplication(self, x,y):
         return x * y
     
-    def Division(self, x,y):
+    def division(self, x,y):
+        if y == 0:
+            return "Error"
         return x / y
     
     def square(self,x): #only for power 2 square
@@ -35,6 +37,8 @@ class Calculater:
         return math.pow(x, power)
     
     def square_root(self, x):
+        if x < 0:
+            return "Error"
         return math.sqrt(x)
     
     def sin(self, x):
@@ -53,11 +57,17 @@ class Calculater:
         return math.tan(x)
     
     def inv_sin(self,x):
+        if x < -1 or x > 1:
+            return "Error"
+        
         if self.mode == "Degrees":
             return math.degrees(math.asin(x))
         return math.asin(x)
     
     def inv_cos(self, x):
+        if x < -1 or x > 1:
+            return "Error"
+        
         if self.mode == "Degrees":
             return math.degrees(math.acos(x))
         return math.acos(x)
