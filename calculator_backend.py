@@ -7,7 +7,7 @@ Created on Wed May  6 18:26:32 2026
 """
 import math 
 
-class Calculater:
+class Calculator:
     def __init__(self):
         self.mode = "Degrees"
 
