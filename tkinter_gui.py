@@ -1,5 +1,5 @@
 import tkinter as tk
-
+import math
 from calculator_backend import Calculator
 
 
@@ -11,7 +11,7 @@ class CalculatorGUI:
         self.expression = ""
 
         self.display = tk.Entry(root, font=("Arial", 24), justify="right", bd=9)
-        self.display.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+        self.display.grid(row=0, column=0, columnspan=5, padx=10, pady=10)
 
         buttons = [
             'sin', 'cos', 'tan', 'inv_sin', 'inv_cos',
@@ -27,7 +27,7 @@ class CalculatorGUI:
         for button in buttons:
             #
             tk.Button(root, text=button, width=8, height=2,
-                      command=lambda t=button: self.process_input(t)).grid(row=row, column=column, padx=2, pady=2)
+                      command=lambda text=button: self.run_input(text)).grid(row=row, column=column, padx=2, pady=2)
             column += 1
             if column > 4:
                 column = 0
@@ -42,14 +42,18 @@ class CalculatorGUI:
             self.display.insert(tk.END, str(result))
 
         elif input_action == 'Mode':
-            new_mode = "Radians" if self.calc.mode == "Degrees" else "Degrees"
-            self.calc.change_mod(new_mode)
+            if self.calc.mode == "Degrees":
+                new_mode = "Radians"
+            else:
+                new_mode = "Degrees"
 
+            self.calc.change_mod(new_mode)
             # Update the window title of the mode
             self.root.title(f"Scientific Calculator - {new_mode.upper()}")
 
         elif input_action == 'C':
-            self.display.delete(0, tk.END)
+            if self.display:
+                self.display.delete(0, tk.END)
 
         elif input_action == 'DEL':
             self.display.delete(len(current_display) - 1, tk.END)
@@ -61,7 +65,7 @@ class CalculatorGUI:
         elif input_action == "x^p":
             self.display.insert(tk.END, "**")
         elif input_action == "π":
-            self.display.insert(tk.END, "3.14159")
+            self.display.insert(tk.END, str(math.pi))
         else:
 
             self.display.insert(tk.END, input_action)
