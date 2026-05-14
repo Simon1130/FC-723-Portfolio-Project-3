@@ -77,7 +77,7 @@ class Calculator:
             return math.degrees(math.atan(x))
         return math.atan(x)
     
-    def caluclate(self, action):
+    def calculate(self, action):
         try:
             result = eval(action, {"__builtins__": None}, {
                 "sin": self.sin,
