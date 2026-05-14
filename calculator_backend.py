@@ -76,3 +76,21 @@ class Calculator:
         if self.mode == "Degrees":
             return math.degrees(math.atan(x))
         return math.atan(x)
+    
+    def caluclate(self, action):
+        try:
+            result = eval(action, {"__builtins__": None}, {
+                "sin": self.sin,
+                "cos": self.cos,
+                "tan": self.tan,
+                "inv_sin": self.inv_sin,
+                "inv_cos": self.inv_cos,
+                "inv_tan": self.inv_tan,
+                "sqrt": self.square_root
+                
+                })
+            return result
+        except ZeroDivisionError:
+            return "Error"
+        except Exception:
+            return "Error"
