@@ -68,7 +68,7 @@ class CalculatorGUI:
             self.display.insert(tk.END, str(math.pi))
         else:
 
-            self.display.insert(tk.END, input_action)
+             self.display.insert(tk.END, input_action)
 
 
 if __name__ == "__main__":
