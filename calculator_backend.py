@@ -25,7 +25,7 @@ class Calculator:
     def multiplication(self, x,y):
         return x * y
     
-    def division(self, x,y):
+    def division(self, x,y): # cant be divide by 0
         if y == 0:
             return "Error"
         return x / y
@@ -36,7 +36,7 @@ class Calculator:
     def power_square(self, x,power): #accept any input of powers
         return math.pow(x, power)
     
-    def square_root(self, x):
+    def square_root(self, x): #input of sqrt can not be nagetive
         if x < 0:
             return "Error"
         return math.sqrt(x)
@@ -57,7 +57,7 @@ class Calculator:
         return math.tan(x)
     
     def inv_sin(self,x):
-        if x < -1 or x > 1:
+        if x < -1 or x > 1: #inverse sin and cos only accept range of -1 to 1
             return "Error"
         
         if self.mode == "Degrees":
@@ -65,7 +65,7 @@ class Calculator:
         return math.asin(x)
     
     def inv_cos(self, x):
-        if x < -1 or x > 1:
+        if x < -1 or x > 1: #inverse sin and cos only accept range of -1 to 1
             return "Error"
         
         if self.mode == "Degrees":
@@ -78,7 +78,7 @@ class Calculator:
         return math.atan(x)
     
     def calculate(self, action):
-        try:
+        try: #use try to prevent invalid formula that crash
             result = eval(action, {"__builtins__": None}, {
                 "sin": self.sin,
                 "cos": self.cos,
@@ -87,10 +87,11 @@ class Calculator:
                 "inv_cos": self.inv_cos,
                 "inv_tan": self.inv_tan,
                 "sqrt": self.square_root
-                
                 })
+            #use eval() to take string into working code
+            #use __builtins__ to prevent unauthorized access
             return result
-        except ZeroDivisionError:
+        except ZeroDivisionError: #when there is a mathematical error
             return "Error"
-        except Exception:
+        except Exception: #for all other error
             return "Error"
